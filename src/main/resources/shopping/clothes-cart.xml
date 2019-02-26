@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util
+http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean name="item1" class="com.springdoc.beans.shopping.Item">
+		<constructor-arg name="name"><value>Shirt</value></constructor-arg>
+		<constructor-arg name="category"><value>Clothes</value></constructor-arg>
+		<constructor-arg name="price"><value>200</value></constructor-arg>
+	</bean>
+	
+	<bean name="item2" class="com.springdoc.beans.shopping.Item">
+		<constructor-arg name="name"><value>Jeans</value></constructor-arg>
+		<constructor-arg name="category"><value>Clothes</value></constructor-arg>
+		<constructor-arg name="price"><value>250</value></constructor-arg>
+	</bean>
+	
+	<util:map id="shoppingList">
+		<entry key-ref="item1" value="1" />
+		<entry key-ref="item2" value="1" />
+	</util:map>
+	
+	<bean id="shoppingCart" class="com.springdoc.beans.shopping.ShoppingCart">
+		<constructor-arg name="username">
+			<value>Viraj</value>
+		</constructor-arg>
+		<constructor-arg name="cartItems" ref="shoppingList" />
+	</bean>
+	<alias name="shoppingList" alias="foodShoppingList"/>
+</beans>
